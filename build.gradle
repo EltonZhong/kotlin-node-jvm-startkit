@@ -1,9 +1,11 @@
 plugins {
-    id 'kotlin-multiplatform' version '1.3.10'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.11'
 }
+
 repositories {
     mavenCentral()
 }
+
 group 'com.example'
 version '0.0.1'
 
@@ -12,11 +14,10 @@ apply plugin: 'maven-publish'
 kotlin {
     targets {
         fromPreset(presets.jvm, 'jvm')
-        fromPreset(presets.js, 'js')
+        fromPreset(presets.js, 'nodeJs')
         // For ARM, preset should be changed to presets.iosArm32 or presets.iosArm64
         // For Linux, preset should be changed to e.g. presets.linuxX64
         // For MacOS, preset should be changed to e.g. presets.macosX64
-        fromPreset(presets.macosX64, 'macos')
     }
     sourceSets {
         commonMain {
@@ -41,19 +42,15 @@ kotlin {
                 implementation 'org.jetbrains.kotlin:kotlin-test-junit'
             }
         }
-        jsMain {
+        nodeJsMain {
             dependencies {
                 implementation 'org.jetbrains.kotlin:kotlin-stdlib-js'
             }
         }
-        jsTest {
+        nodeJsTest {
             dependencies {
                 implementation 'org.jetbrains.kotlin:kotlin-test-js'
             }
-        }
-        macosMain {
-        }
-        macosTest {
         }
     }
 }

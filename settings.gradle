@@ -2,6 +2,8 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id == "kotlin-multiplatform") {
+                print(requested.id)
+                print(requested.version)
                 useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
             }
         }
