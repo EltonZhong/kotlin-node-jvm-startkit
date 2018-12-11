@@ -2,6 +2,7 @@ package coroutines
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.GlobalScope
+import ktor.get
 
 suspend fun getInt(): Int {
     val d = GlobalScope.async {
@@ -34,6 +35,7 @@ suspend fun main(args: Array<String>) {
     println(platform())
     println(getInt())
     println(getDeferred().await())
+    get()
 }
 
 suspend expect fun platform(): String

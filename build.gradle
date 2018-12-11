@@ -99,7 +99,8 @@ kotlin {
 
 dependencies {
     commonMainImplementation "io.ktor:ktor-client:$ktor_version"
-    jvmMainImplementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    jvmMainApi "io.ktor:ktor-client-okhttp:$ktor_version"
+    jvmMainApi "com.squareup.okhttp3:okhttp:3.11.0"
     nodeJsMainImplementation "io.ktor:ktor-client-js:$ktor_version"
 }
 
@@ -114,7 +115,7 @@ def dump(obj) {
     }
 }
 
-task collectJs(dependsOn: [nodeJsJar]) {
+task node(dependsOn: [nodeJsJar]) {
     doLast {
         copy {
             def nodeJsCompilations = kotlin.targets.nodeJs.compilations
