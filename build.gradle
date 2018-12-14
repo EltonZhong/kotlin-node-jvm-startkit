@@ -128,7 +128,7 @@ task node(dependsOn: [nodeJsJar]) {
                     from zipTree(it.absolutePath).matching { include '*.js' }
                 }
             }
-            into "node/kotlin-dependencies"
+            into "node/node_modules"
         }
     }
 }

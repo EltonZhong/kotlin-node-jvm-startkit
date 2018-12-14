@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "kotlin": "^1.3.11"
+    "kotlin": "^1.3.11",
+    "node-fetch": "^2.3.0",
+    "text-encoding": "^0.7.0"
   }
 }
