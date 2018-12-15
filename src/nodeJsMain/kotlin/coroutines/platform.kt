@@ -11,3 +11,6 @@ actual suspend fun platform(): String {
         return@async "js"
     }.await()
 }
+
+actual suspend fun main(args: Array<String>) {
+}
