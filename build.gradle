@@ -40,7 +40,7 @@ kotlin {
                     metaInfo = true
                     sourceMap = true
                     moduleKind = 'commonjs'
-                    outputFile = "node/kotlin/index.js"
+                    outputFile = "node/kotlin/main/index.js"
                     // Whether we should call main func directly in kotlin
                     main = "call"
                     sourceMapEmbedSources = "always"
@@ -53,6 +53,7 @@ kotlin {
                     sourceMap = true
                     moduleKind = 'commonjs'
                     sourceMapEmbedSources = "always"
+                    outputFile = "node/kotlin/test/index.js"
                 }
             }
         })
@@ -106,7 +107,7 @@ def dump(obj) {
     }
 }
 
-task node(dependsOn: [nodeJsJar]) {
+task node(dependsOn: [nodeJsJar, nodeJsTestClasses]) {
     doLast {
         copy {
             def nodeJsCompilations = kotlin.targets.nodeJs.compilations
@@ -115,6 +116,11 @@ task node(dependsOn: [nodeJsJar]) {
             dump(kotlin.sourceSets.nodeJsMain)
             dump(nodeJsCompilations.main)
             nodeJsCompilations.main.runtimeDependencyFiles.each {
+                if (it.exists() && !it.isDirectory()) {
+                    from zipTree(it.absolutePath).matching { include '*.js' }
+                }
+            }
+            nodeJsCompilations.test.runtimeDependencyFiles.each {
                 if (it.exists() && !it.isDirectory()) {
                     from zipTree(it.absolutePath).matching { include '*.js' }
                 }

@@ -7,5 +7,7 @@ class SampleTestsJS {
     @Test
     fun testHello() {
         assertTrue("JS" in hello())
+        println("Test is running!!!")
+        assertTrue(false)
     }
 }

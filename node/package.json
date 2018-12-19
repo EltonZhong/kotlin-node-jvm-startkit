@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run setup && . ./.env && node kotlin/test/index.js",
+    "start": "npm run setup && . ./.env && node kotlin/main/index.js",
     "setup": "npm run gradle",
-    "gradle": "cd .. && gradle node && cd node",
+    "gradle": "cd .. && gradle clean build && gradle node",
     "preinstall": "rm -rf ./node_modules && mv -f ./kotlin-dependencies ./node_modules",
     "prepublish": "npm run setup"
   },
