@@ -7,9 +7,9 @@
 ## Usage
 
 ### Js
-- Run test written in kotlin: cd node && npm test
-- Run main function written in kotlin: cd node && npm start
-- Publish to npm registry: modify package info in `node/package.json`, and run `npm publish`
+- **Test**: Run test written in kotlin: `cd node && npm test`
+- **Main**: Run main function written in kotlin: `cd node && npm start`
+- **Publish**: Publish to npm registry: modify package info in `node/package.json`, and run `npm publish`
 
 ### Jvm
 - Test: gradle jvmTest
