@@ -97,15 +97,6 @@ kotlin {
     }
 }
 
-dependencies {
-    commonMainImplementation "io.ktor:ktor-client:$ktor_version"
-    jvmMainApi "io.ktor:ktor-client-okhttp:$ktor_version"
-    jvmMainApi "com.squareup.okhttp3:okhttp:3.11.0"
-    nodeJsMainImplementation "io.ktor:ktor-client-js:$ktor_version"
-}
-
-
-
 def dump(obj) {
     println("${obj.class.name}:")
     obj.properties.each { println "$it.key : ${it?.value?.class?.name}   ->   $it.value" }
@@ -128,7 +119,7 @@ task node(dependsOn: [nodeJsJar]) {
                     from zipTree(it.absolutePath).matching { include '*.js' }
                 }
             }
-            into "node/node_modules"
+            into "node/kotlin-dependencies"
         }
     }
 }

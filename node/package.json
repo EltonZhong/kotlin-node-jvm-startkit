@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": ". ./.env && node kotlin/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run setup && . ./.env && node kotlin/test/index.js",
+    "setup": "npm run gradle",
+    "gradle": "cd .. && gradle node && cd node",
+    "preinstall": "rm -rf ./node_modules && mv -f ./kotlin-dependencies ./node_modules",
+    "prepublish": "npm run setup"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "kotlin": "^1.3.11",
     "node-fetch": "^2.3.0",
     "text-encoding": "^0.7.0"
   }
