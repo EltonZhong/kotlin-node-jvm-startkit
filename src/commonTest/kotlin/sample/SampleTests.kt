@@ -1,5 +1,6 @@
 package sample
 
+import kotlinx.coroutines.delay
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
